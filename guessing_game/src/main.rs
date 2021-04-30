@@ -13,8 +13,8 @@ fn main() {
         let mut guess = String::new();
         io::stdin().read_line(&mut guess)
             .expect("Failed to read line");
-    
-        let guess: u32 = match guess.trim().parse() {  // 1. 此时已无需再是 mutable（可变）, 2. 同变量名赋值被称为 shadow （隐藏）
+
+        let guess: u32 = match guess.trim().parse() {  // 1. 此时已无需再是 mutable（可变）, 2. 同变量名重复声明被称为 shadow （隐藏）
             Ok(num) => num,
             Err(_) => continue,
         };
