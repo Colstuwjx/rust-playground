@@ -15,7 +15,7 @@ impl error::ResponseError for MyError {}
 async fn index() -> Result<&'static str, MyError> {
     let err = MyError { name: "test error" };
     // println!("{}", err);
-    info!("{}", err);
+    info!(target:"my_errors", "{}", err);
     Err(err)
 }
 
