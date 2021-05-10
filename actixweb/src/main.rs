@@ -15,14 +15,13 @@ impl error::ResponseError for MyError {}
 async fn index() -> Result<&'static str, MyError> {
     let err = MyError { name: "test error" };
     info!("{}", err);
-    // info!(target:"my_errors", "{}", err);
     Err(err)
 }
 
 #[rustfmt::skip]
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    std::env::set_var("RUST_LOG", "my_errors=info,actix_web=info");
+    std::env::set_var("RUST_LOG", "info");
     std::env::set_var("RUST_BACKTRACE", "1");
     env_logger::init();
 
