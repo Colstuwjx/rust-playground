@@ -1,6 +1,6 @@
 use actix_web::{error, get, middleware::Logger, App, HttpServer, Result};
 use derive_more::{Display, Error};
-use log::info;
+use log::debug;
 
 #[derive(Debug, Display, Error)]
 #[display(fmt = "my error: {}", name)]
@@ -14,8 +14,8 @@ impl error::ResponseError for MyError {}
 #[get("/")]
 async fn index() -> Result<&'static str, MyError> {
     let err = MyError { name: "test error" };
-    // println!("{}", err);
-    info!(target:"my_errors", "{}", err);
+    debug!("{}", err);
+    // debug!(target:"my_errors", "{}", err);
     Err(err)
 }
 
